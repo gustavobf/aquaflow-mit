@@ -89,6 +89,47 @@ Tecnologias previstas para o desenvolvimento:
 * JUnit
 * Mockito
 
+## 📚 Documentacao da API
+
+O projeto utiliza Swagger/OpenAPI para documentar os endpoints REST e os contratos de entrada/saida.
+
+### Swagger UI
+
+* URL: `http://localhost:8080/swagger-ui/index.html`
+
+### OpenAPI JSON
+
+* URL: `http://localhost:8080/v3/api-docs`
+
+### Validacoes de Entrada
+
+Os DTOs de requisicao usam Bean Validation (`jakarta.validation`) para garantir consistencia dos dados, por exemplo:
+
+* Campos obrigatorios com `@NotBlank` e `@NotNull`
+* E-mail valido com `@Email`
+* Valores numericos minimos com `@DecimalMin` e `@Min`
+* Tipos controlados com `@Pattern` (pagamento e frequencia)
+
+Os controladores aplicam `@Valid` em `@RequestBody` para disparar as validacoes automaticamente.
+
+### Padrao de Erro Global
+
+Todas as falhas da API retornam um contrato padrao (`ErroPadraoResposta`) com:
+
+* `timestamp`
+* `status`
+* `erro`
+* `mensagem`
+* `caminho`
+* `detalhes` (lista de erros de validacao quando aplicavel)
+
+## 🗄️ Banco H2 em Memoria
+
+As configuracoes da aplicacao foram centralizadas em `application.yml`.
+
+* Console H2: `http://localhost:8080/h2-console`
+* JDBC URL: `jdbc:h2:mem:aquaflowdb`
+
 ## 📈 Benefícios
 
 * Centralização das informações da academia
