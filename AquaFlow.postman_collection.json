@@ -1,0 +1,199 @@
+{
+  "info": {
+    "_postman_id": "2f16ab6e-0a3a-4fae-a14d-cd31baf18c3d",
+    "name": "AquaFlow API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Colecao com endpoints principais e relatorios do AquaFlow. Endpoints de relatorios retornam PDF (application/pdf)."
+  },
+  "item": [
+    {
+      "name": "Endpoints Base",
+      "item": [
+        {
+          "name": "Health - Swagger",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/swagger-ui.html",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "swagger-ui.html"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Alunos - Buscar por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/alunos/{{alunoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "alunos",
+                "{{alunoId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Frequencias - Buscar por Matricula",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/frequencias/matricula/{{matriculaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "frequencias",
+                "matricula",
+                "{{matriculaId}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Relatorios PDF",
+      "description": "Todos os endpoints desta pasta retornam arquivo PDF com os dados preenchidos.",
+      "item": [
+        {
+          "name": "Presencas por Turma (PDF)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/pdf",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/relatorios/presencas/turma/{{turmaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "relatorios",
+                "presencas",
+                "turma",
+                "{{turmaId}}"
+              ]
+            },
+            "description": "Retorna um PDF com totais de presenca, ausencia e taxa percentual da turma."
+          }
+        },
+        {
+          "name": "Ocupacao das Turmas (PDF)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/pdf",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/relatorios/turmas/ocupacao",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "relatorios",
+                "turmas",
+                "ocupacao"
+              ]
+            },
+            "description": "Retorna um PDF em tabela com capacidade, matriculas ativas, vagas e taxa de ocupacao por turma."
+          }
+        },
+        {
+          "name": "Pagamentos - Resumo (PDF)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/pdf",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/relatorios/pagamentos/resumo",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "relatorios",
+                "pagamentos",
+                "resumo"
+              ]
+            },
+            "description": "Retorna um PDF com consolidado de matriculas ativas/canceladas e valores de mensalidade."
+          }
+        },
+        {
+          "name": "Pagamentos por Turma (PDF)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/pdf",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/relatorios/pagamentos/turmas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "relatorios",
+                "pagamentos",
+                "turmas"
+              ]
+            },
+            "description": "Retorna um PDF em tabela com quantidade de matriculas e receita mensal ativa por turma."
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "alunoId",
+      "value": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+    },
+    {
+      "key": "matriculaId",
+      "value": "55555555-5555-5555-5555-555555555555"
+    },
+    {
+      "key": "turmaId",
+      "value": "33333333-3333-3333-3333-333333333333"
+    }
+  ]
+}
+
